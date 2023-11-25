@@ -1,5 +1,7 @@
 <?php
 
-view('index.view.php', [
-    'heading' => 'Home'
+$_SESSION['name'] = 'Roy';
+
+view('index', [
+    'header' => 'Home'
 ]);

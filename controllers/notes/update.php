@@ -15,8 +15,8 @@ if(! Validator::string($_POST['body'], 1, 300)) {
 }
 
 if(!empty($errors)) {
-    view('notes/edit.view.php', [
-        'heading' => 'Update Note',
+    view('notes/edit', [
+        'header' => 'Update Note',
         'errors' => $errors,
         'note' => $note
     ]);

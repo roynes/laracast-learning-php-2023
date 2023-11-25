@@ -1,5 +1,8 @@
 <?php
+
+use Core\Middleware\Middleware;
 use Core\Response;
+use Core\App;
 
 function dd($value)
 {
@@ -35,9 +38,13 @@ function base_path($path) {
 function view($path, $attributes = []) {
     extract($attributes);
 
-    require base_path('views/' . $path);
+    require base_path("views/{$path}.view.php");
 }
 
 function db() {
-    return Core\App::resolve(Core\Database::class);
+    return App::resolve(Database::class);
+}
+
+function middleware($key = 'guest') {
+    Middleware::resolve($key);
 }

@@ -10,7 +10,7 @@ try {
     dd($e);
 }
 
-view('notes/index.view.php', [
-    'heading' => 'My Notes',
+view('notes/index', [
+    'header' => 'My Notes',
     'notes' => $notes
 ]);
