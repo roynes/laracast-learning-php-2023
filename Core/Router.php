@@ -1,8 +1,5 @@
 <?php
-
 namespace Core;
-
-// use Core\Middleware\Middleware;
 
 class Router {
     protected $routes = [];
@@ -61,7 +58,7 @@ class Router {
 
     protected function abort($code = 404) {
         http_response_code($code);
-        require view("{$code}.php");
+        require view("{$code}");
         die();
     }
 }

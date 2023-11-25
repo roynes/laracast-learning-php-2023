@@ -39,7 +39,7 @@ db()->query(
     compact('email', 'password')
 );
 
-$_SESSION['user'] = compact('user');
+login($user);
 
 header('location: /');
 exit();

@@ -5,8 +5,7 @@ use Core\Database;
 use Core\Response;
 use Core\App;
 
-function dd($value)
-{
+function dd($value) {
     echo "<pre>";
     var_dump($value);
     echo "</pre>";
@@ -21,7 +20,7 @@ function urlIs($value) {
 function abort($code = 404) {
     http_response_code($code);
 
-    require view("{$code}.php");
+    require view("{$code}");
 
     die();
 }
@@ -48,4 +47,29 @@ function db() {
 
 function middleware($key = 'guest') {
     Middleware::resolve($key);
+}
+
+function login($user) {
+    $_SESSION['user'] = [
+        'email' => $user['email'],
+        'id' => $user['id']
+    ];
+
+    session_regenerate_id(true);
+}
+
+function logout() {
+    $_SESSION = null;
+    session_destroy();
+
+    $params = session_get_cookie_params();
+    setcookie(
+        'PHPSESSID', 
+        '', 
+        time() - 3600, 
+        $params['path'], 
+        $params['domain'], 
+        $params['secure'], 
+        $params['httponly']
+    );
 }
