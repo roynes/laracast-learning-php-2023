@@ -1,6 +1,7 @@
 <?php
 
 use Core\Middleware\Middleware;
+use Core\Database;
 use Core\Response;
 use Core\App;
 

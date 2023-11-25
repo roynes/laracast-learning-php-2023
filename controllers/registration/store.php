@@ -31,6 +31,9 @@ if($user) {
     exit();
 }
 
+//Hashing the password
+$password = password_hash($password, PASSWORD_DEFAULT);
+
 db()->query(
     'INSERT INTO users(email, password) VALUES(:email, :password)',
     compact('email', 'password')
