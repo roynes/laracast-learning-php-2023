@@ -1,22 +1,14 @@
 <?php
 use Core\Validator;
+use Http\Form\RegistrationForm;
 
-$config = require base_path('config.php');
-$errors = [];
 $email = $_POST['email'];
 $password = $_POST['password'];
+$form = new RegistrationForm;
 
-if(! Validator::string($_POST['email'], 1, 1000)) {
-    $errors['email'] = 'Please provide a valid email address';
-}
-
-if(! Validator::string($_POST['password'], 7, 255)) {
-    $errors['email'] = 'Please provde a password with at least 7 characters';
-}
-
-if(!empty($errors)) {
+if(! $form->validate($email, $password)) {
     return view('registration/create', [
-        'errors' => $errors
+        'errors' => $form->errors()
     ]);
 }
 
@@ -27,8 +19,7 @@ $user = db()->query(
 
 
 if($user) {
-    header('location: /');
-    exit();
+    redirect('/');
 }
 
 //Hashing the password
@@ -41,5 +32,4 @@ db()->query(
 
 login($user);
 
-header('location: /');
-exit();
+redirect('/');

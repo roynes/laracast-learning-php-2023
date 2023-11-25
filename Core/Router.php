@@ -49,7 +49,10 @@ class Router {
             )) {
                 middleware($route['middleware']);
 
-                return require base_path($route['controller']);
+                return require base_path(join(
+                    DIRECTORY_SEPARATOR,
+                    [ 'Http', 'controllers', $route['controller']]
+                ));
             }
         }
 

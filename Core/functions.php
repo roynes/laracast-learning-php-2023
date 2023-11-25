@@ -73,3 +73,8 @@ function logout() {
         $params['httponly']
     );
 }
+
+function redirect($path) {
+    header("location: {$path}");
+    exit();
+}
