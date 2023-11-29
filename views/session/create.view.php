@@ -33,7 +33,8 @@
                                       placeholder:text-gray-400 
                                       focus:ring-2 focus:ring-inset 
                                       focus:ring-indigo-600 sm:text-sm 
-                                      sm:leading-6">
+                                      sm:leading-6"
+                               value="<?= old('email') ?>">
 
                         <?php if(isset($errors['email'])) :  ?>
                             <p class="text-red-500 text-xs mt-2"><?= $errors['email'] ?></p>
@@ -62,7 +63,8 @@
                                                placeholder:text-gray-400 
                                                focus:ring-2 focus:ring-inset 
                                                focus:ring-indigo-600 
-                                               sm:text-sm sm:leading-6">
+                                               sm:text-sm sm:leading-6"
+                               value="<?= old('password') ?>">
 
                         <?php if(isset($errors['password'])) :  ?>
                             <p class="text-red-500 text-xs mt-2"><?= $errors['password'] ?></p>
