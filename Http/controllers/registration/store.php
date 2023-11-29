@@ -1,12 +1,10 @@
 <?php
-use Core\Validator;
 use Http\Form\RegistrationForm;
 
 $email = $_POST['email'];
 $password = $_POST['password'];
-$form = new RegistrationForm;
 
-if(! $form->validate($email, $password)) {
+if(! RegistrationForm::validate($email, $password)) {
     return view('registration/create', [
         'errors' => $form->errors()
     ]);

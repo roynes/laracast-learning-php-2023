@@ -3,7 +3,7 @@
 namespace Core\Form;
 
 interface Contract {
-    public function validate($email, $password): bool;
+    public static function validate($attributes);
     public function errors();
     public function error($field, $message);
 }
