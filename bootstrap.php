@@ -3,7 +3,6 @@
 use Core\App;
 use Core\Container;
 use Core\Database;
-use Core\Middleware\Middleware;
 
 $container = new Container;
 $container->bind(
@@ -14,16 +13,5 @@ $container->bind(
         return new Database($config['database']);
     }
 );
-
-// For future use.
-// For now, there's no use for containerisatio of middlewares
-// foreach (Middleware::MAP as $key => $value) {
-//     $container->bind(
-//         $value,
-//         function() use ($value){
-//             return new $value;
-//         }
-//     );
-// }
 
 App::setContainer($container);
